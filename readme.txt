@@ -15,7 +15,7 @@ This plugin allows you to select multiple roles for a user - something that Word
 
 User edit screens will display a checklist of roles instead of the default role dropdown. The main user list screen will also display all roles a user has.
 
-That's it. No extra cruft or settings pages. For additional features like adding new roles and editing capabilities, I recommend a plugin such as <a href="https://wordpress.org/plugins/members/">Members</a>.
+That's it. No extra settings. This plugin is a good complement to other user plugins that don't support multiple roles, such as <a href="https://wordpress.org/plugins/members/">Members</a>.
 
 == Installation ==
 
