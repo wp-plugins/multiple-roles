@@ -25,6 +25,7 @@ function md_multiple_roles() {
 	add_action( 'admin_enqueue_scripts', array( $checklist, 'remove_dropdown' ) );
 	add_action( 'show_user_profile',     array( $checklist, 'output_checklist' ) );
 	add_action( 'edit_user_profile',     array( $checklist, 'output_checklist' ) );
+	add_action( 'user_new_form',         array( $checklist, 'output_checklist' ) );
 	add_action( 'profile_update',        array( $checklist, 'process_checklist' ) );
 	add_action( 'user_register',         array( $checklist, 'process_checklist' ) );
 

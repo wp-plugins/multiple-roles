@@ -27,7 +27,7 @@ class MDMR_Checklist_Controller {
 	 * @param string $hook The current admin screen.
 	 */
 	public function remove_dropdown( $hook ) {
-		if ( $hook != 'user-edit.php' )
+		if ( $hook != 'user-edit.php' && $hook != 'user-new.php' )
 			return;
 		wp_enqueue_script( 'md-multiple-roles', MDMR_URL . 'views/js/scripts.js', array( 'jquery' ) );
 	}
@@ -46,7 +46,7 @@ class MDMR_Checklist_Controller {
 		wp_nonce_field( 'update-md-multiple-roles', 'md_multiple_roles_nonce' );
 
 		$roles        = $this->model->get_roles();
-		$user_roles   = $user->roles;
+        $user_roles   = ( isset( $user->roles ) ) ? $user->roles : null;
 
 		include( MDMR_PATH . 'views/checklist.html.php' );
 

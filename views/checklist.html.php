@@ -17,7 +17,9 @@
 						type="checkbox"
 						name="md_multiple_roles[]"
 						value="<?php echo $name; ?>"
-						<?php checked( in_array( $name, $user_roles ) ); ?>
+                        <?php if ( ! is_null( $user_roles ) ) :
+                            checked( in_array( $name, $user_roles ) );
+                        endif; ?>
 					/>
 					<?php echo $label; ?>
 				</label>
