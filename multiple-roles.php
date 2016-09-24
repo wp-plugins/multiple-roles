@@ -2,8 +2,8 @@
 /*
 Plugin Name: Multiple Roles
 Description: Allow users to have multiple roles on one site.
-Version: 1.0
-Author: Michael Dance
+Version: 1.1
+Author: Michael Dance, Florian Tiar
 Author URI: http://mikedance.com
 */
 
