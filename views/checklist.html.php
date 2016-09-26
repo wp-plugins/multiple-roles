@@ -5,10 +5,10 @@
  * @var $roles array All WordPress roles in name => label pairs.
  * @var $user_roles array An array of role names belonging to the current user.
  */
-?><h3>Permissions</h3>
+?><h3><?php _e( 'Permissions', MDMR_TXTDOMAIN ); ?></h3>
 <table class="form-table">
 	<tr>
-		<th>Roles</th>
+		<th><?php _e( 'Roles', MDMR_TXTDOMAIN ); ?></th>
 		<td>
 			<?php foreach( $roles as $name => $label ) : ?>
 				<label for="md-multiple-roles-<?php echo $name; ?>">

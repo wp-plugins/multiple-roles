@@ -5,10 +5,12 @@ Description: Allow users to have multiple roles on one site.
 Version: 1.1
 Author: Michael Dance, Florian Tiar
 Author URI: http://mikedance.com
+Text Domain: multiple-roles
 */
 
 define( 'MDMR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MDMR_URL', plugin_dir_url( __FILE__ ) );
+define( 'MDMR_TXTDOMAIN', 'multiple-roles' );
 
 /**
  * Load files and add hooks to get things rolling.
@@ -33,6 +35,9 @@ function md_multiple_roles() {
 	add_filter( 'manage_users_columns',       array( $column, 'replace_column' ), 11 );
 	add_filter( 'manage_users_custom_column', array( $column, 'output_column_content' ), 10, 3 );
 
+    add_action( 'init', function() {
+        load_plugin_textdomain( MDMR_TXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+    } );
 }
 
 md_multiple_roles();

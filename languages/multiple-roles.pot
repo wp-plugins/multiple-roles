@@ -1,0 +1,34 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Multiple Roles\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-26 14:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Florian TIAR <contact@tiar-florian.fr>\n"
+"Language-Team: Florian TIAR <contact@tiar-florian.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: _e;__;_x;esc_html__;esc_html_e;_n;_ex;esc_html_x;"
+"esc_attr_x;translate;esc_attr__;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: assets\n"
+"X-Poedit-SearchPathExcluded-2: fields\n"
+
+#: controllers/column.php:32 views/checklist.html.php:11
+msgid "Roles"
+msgstr ""
+
+#: views/checklist.html.php:8
+msgid "Permissions"
+msgstr ""
+
+#: views/column.html.php:14
+msgid "None"
+msgstr ""
