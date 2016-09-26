@@ -60,6 +60,7 @@ Sure. The user will still be able to log in and out, but won't be able to access
 
 = 1.1 =
 * Add support of role checkbox in new user form (admin).
+* Add i18n support (text domain, translatable strings and pot file)
 
 = 1.0 =
 * Initial release.
