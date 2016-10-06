@@ -11,17 +11,17 @@
 		<th><?php _e( 'Roles', 'multiple-roles' ); ?></th>
 		<td>
 			<?php foreach( $roles as $name => $label ) : ?>
-				<label for="md-multiple-roles-<?php echo $name; ?>">
+				<label for="md-multiple-roles-<?php echo esc_attr( $name ); ?>">
 					<input
-						id="md-multiple-roles-<?php echo $name; ?>"
+						id="md-multiple-roles-<?php echo esc_attr( $name ); ?>"
 						type="checkbox"
 						name="md_multiple_roles[]"
-						value="<?php echo $name; ?>"
+						value="<?php echo esc_attr( $name ); ?>"
                         <?php if ( ! is_null( $user_roles ) ) :
                             checked( in_array( $name, $user_roles ) );
                         endif; ?>
 					/>
-					<?php echo $label; ?>
+					<?php echo esc_html( $label ); ?>
 				</label>
 				<br />
 			<?php endforeach; ?>

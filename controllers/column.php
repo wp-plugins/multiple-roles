@@ -43,8 +43,9 @@ class MDMR_Column_Controller {
 	 */
 	public function output_column_content( $output, $column, $user_id ) {
 
-		if ( $column !== 'md_multiple_roles_column' )
+		if ( 'md_multiple_roles_column' !== $column ) {
 			return $output;
+		}
 
 		$roles = $this->model->get_user_roles( $user_id );
 

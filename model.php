@@ -14,6 +14,21 @@ class MDMR_Model {
 		return $wp_roles->role_names;
 	}
 
+	public function is_role_exists( $user_role = '' ) {
+		if ( empty( $user_role ) ) {
+			return false;
+		}
+
+		$roles = $this->get_roles();
+		foreach ( $roles as $role ) {
+			if ( $user_role === $role ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	/**
 	 * Grab a particular user's roles.
 	 *
@@ -22,21 +37,22 @@ class MDMR_Model {
 	 */
 	public function get_user_roles( $user = 0 ) {
 
-		if ( $user && is_int( $user ) )
-			$user = get_user_by( 'id', $user );
-
-		if ( !$user )
+		if ( ! $user ) {
 			return array();
+		}
 
-		global $wp_roles;
+		$user = get_user_by( 'id', (int) $user );
+		if ( empty( $user->roles ) ) {
+			return array();
+		}
+
+		$all_roles = $this->get_roles();
 		$roles = array();
-
 		foreach( $user->roles as $role ) {
-			$roles[$role] = $wp_roles->role_names[$role];
+			$roles[$role] = $all_roles[$role];
 		}
 
 		return $roles;
-
 	}
 
 	/**
@@ -44,11 +60,19 @@ class MDMR_Model {
 	 *
 	 * @param integer $user_id The WordPress user ID.
 	 * @param array $roles The new array of roles for the user.
+	 *
+	 * @return bool
 	 */
 	public function update_roles( $user_id = 0, $roles = array() ) {
 
+		if ( empty( $roles ) ) {
+			return false;
+		}
+
 		$roles = array_map( 'sanitize_key', (array) $roles );
-		$user = get_user_by( 'id', $user_id );
+		$roles = array_filter( $roles, array( $this, 'is_role_exists' ) );
+
+		$user = get_user_by( 'id', (int) $user_id );
 
 		// remove all roles
 		$user->set_role( '' );
@@ -57,6 +81,7 @@ class MDMR_Model {
 			$user->add_role( $role );
 		}
 
+		return true;
 	}
 
 	/**
@@ -69,9 +94,10 @@ class MDMR_Model {
 	public function can_update_roles() {
 
 		if ( is_network_admin()
-	      || !current_user_can( 'edit_users' )
-		  || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && !current_user_can( 'manage_sites' ) ) )
+	      || ! current_user_can( 'edit_users' )
+		  || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
 			return false;
+		}
 
 		return true;
 
