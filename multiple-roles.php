@@ -10,7 +10,6 @@ Text Domain: multiple-roles
 
 define( 'MDMR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MDMR_URL', plugin_dir_url( __FILE__ ) );
-define( 'MDMR_TXTDOMAIN', 'multiple-roles' );
 
 /**
  * Load files and add hooks to get things rolling.
@@ -36,7 +35,7 @@ function md_multiple_roles() {
 	add_filter( 'manage_users_custom_column', array( $column, 'output_column_content' ), 10, 3 );
 
     add_action( 'init', function() {
-        load_plugin_textdomain( MDMR_TXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+        load_plugin_textdomain( 'multiple-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
     } );
 }
 

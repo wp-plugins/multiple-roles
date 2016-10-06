@@ -29,7 +29,7 @@ class MDMR_Column_Controller {
 	 */
 	public function replace_column( $columns ) {
 		unset( $columns['role'] );
-		$columns['md_multiple_roles_column'] = __( 'Roles', MDMR_TXTDOMAIN );
+		$columns['md_multiple_roles_column'] = __( 'Roles', 'multiple-roles' );
 		return $columns;
 	}
 

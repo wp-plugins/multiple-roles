@@ -11,6 +11,6 @@
 		endforeach;
 		echo implode( ', ', $roles );
 	else : ?>
-		<span class="md-multiple-roles-no-role"><?php _e( 'None', MDMR_TXTDOMAIN ); ?></span>
+		<span class="md-multiple-roles-no-role"><?php _e( 'None', 'multiple-roles' ); ?></span>
 	<?php endif; ?>
 </div><!-- .md-multiple-roles -->
