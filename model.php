@@ -14,21 +14,6 @@ class MDMR_Model {
 		return $wp_roles->role_names;
 	}
 
-	public function is_role_exists( $user_role = '' ) {
-		if ( empty( $user_role ) ) {
-			return false;
-		}
-
-		$roles = $this->get_roles();
-		foreach ( $roles as $role ) {
-			if ( $user_role === $role ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	/**
 	 * Grab a particular user's roles.
 	 *
@@ -70,7 +55,6 @@ class MDMR_Model {
 		}
 
 		$roles = array_map( 'sanitize_key', (array) $roles );
-		$roles = array_filter( $roles, array( $this, 'is_role_exists' ) );
 
 		$user = get_user_by( 'id', (int) $user_id );
 

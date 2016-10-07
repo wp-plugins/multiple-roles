@@ -61,26 +61,20 @@ class MDMR_Checklist_Controller {
 	 * @param int $user_id The user ID whose roles might get updated.
 	 */
 	public function process_checklist( $user_id ) {
-
 		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
-			return false;
+			return;
 		}
 
 		if ( ! $this->model->can_update_roles() ) {
-			return false;
+			return;
 		}
 
 		$new_roles = ( isset( $_POST['md_multiple_roles'] ) && is_array( $_POST['md_multiple_roles'] ) ) ? $_POST['md_multiple_roles'] : array();
 		if ( empty( $new_roles ) ) {
-			return false;
+			return;
 		}
 
-		$updated_roles_check = $this->model->update_roles( $user_id, $new_roles );
-		if ( false === $updated_roles_check ) {
-			return false;
-		}
-
-		return true;
+		$this->model->update_roles( $user_id, $new_roles );
 	}
 
 }
