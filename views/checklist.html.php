@@ -2,7 +2,7 @@
 /**
  * Output the roles checklist.
  *
- * @var $roles array All WordPress roles in name => label pairs.
+ * @var $roles      array All WordPress roles in name => label pairs.
  * @var $user_roles array An array of role names belonging to the current user.
  */
 ?><h3>Permissions</h3>
@@ -10,7 +10,7 @@
 	<tr>
 		<th>Roles</th>
 		<td>
-			<?php foreach( $roles as $name => $label ) : ?>
+			<?php foreach ( $roles as $name => $label ) : ?>
 				<label for="md-multiple-roles-<?php echo $name; ?>">
 					<input
 						id="md-multiple-roles-<?php echo $name; ?>"
@@ -21,7 +21,7 @@
 					/>
 					<?php echo $label; ?>
 				</label>
-				<br />
+				<br/>
 			<?php endforeach; ?>
 		</td>
 	</tr>
