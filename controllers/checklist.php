@@ -28,7 +28,7 @@ class MDMR_Checklist_Controller {
 	 * @param string $hook The current admin screen.
 	 */
 	public function remove_dropdown( $hook ) {
-		if ( $hook != 'user-edit.php' ) {
+		if ( 'user-edit.php' !== $hook ) {
 			return;
 		}
 		wp_enqueue_script( 'md-multiple-roles', MDMR_URL . 'views/js/scripts.js', array( 'jquery' ) );
