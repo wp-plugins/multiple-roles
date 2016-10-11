@@ -14,8 +14,9 @@ Allow users to have multiple roles on one site.
 
 This plugin allows you to select multiple roles for a user - something that WordPress already supports "under the hood", but doesn't provide a user interface for.
 
-User edit screens will display a checklist of roles instead of the default role dropdown. The main user list screen will also display all roles a user has.
+User edit and Add new user screens will display a checklist of roles instead of the default role dropdown. The main user list screen will also display all roles a user has.
 
+It supports well Multisite mode
 That's it. No extra settings. This plugin is a good complement to other user plugins that don't support multiple roles, such as <a href="https://wordpress.org/plugins/members/">Members</a>.
 
 == Installation ==
