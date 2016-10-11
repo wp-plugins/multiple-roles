@@ -8,7 +8,7 @@ class MDMR_Checklist_Controller {
 	/**
 	 * The model object.
 	 *
-	 * @var object
+	 * @var \MDMR_Model $model
 	 */
 	var $model;
 

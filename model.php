@@ -10,8 +10,7 @@ class MDMR_Model {
 	 * @return array Roles in name => label pairs.
 	 */
 	public function get_roles() {
-		global $wp_roles;
-		return $wp_roles->role_names;
+		return get_editable_roles();
 	}
 
 	/**
@@ -78,10 +77,8 @@ class MDMR_Model {
 	 */
 	public function can_update_roles() {
 
-		if ( is_network_admin()
-			|| ! current_user_can( 'edit_users' )
-			|| ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
-			return false;
+		if ( is_network_admin() || ! current_user_can( 'edit_users' ) || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
+				return false;
 		}
 
 		return true;
