@@ -10,7 +10,23 @@ class MDMR_Model {
 	 * @return array Roles in name => label pairs.
 	 */
 	public function get_roles() {
-		return get_editable_roles();
+		global $wp_roles;
+		return apply_filters( 'mdmr/get_roles', $wp_roles->role_names );
+	}
+
+	/**
+	 * Get all editable roles by the current user
+	 *
+	 * @return array editable roles
+	 */
+	public function get_editable_roles() {
+		$editable_roles = get_editable_roles();
+		$final_roles = array();
+		foreach ( $editable_roles as $key => $role ) {
+			$final_roles[$key] = $role['name'];
+		}
+
+		return apply_filters( 'mdmr/get_editable_roles', (array) $final_roles );
 	}
 
 	/**
@@ -49,6 +65,8 @@ class MDMR_Model {
 	 */
 	public function update_roles( $user_id = 0, $roles = array() ) {
 
+		do_action( 'mdmr/before_update_roles', $user_id, $roles );
+
 		if ( empty( $roles ) ) {
 			return false;
 		}
@@ -65,6 +83,8 @@ class MDMR_Model {
 			$user->add_role( $role );
 		}
 
+		do_action( 'mdmr/after_update_roles', $user_id, $roles, $user->roles );
+
 		return true;
 	}
 
@@ -76,6 +96,8 @@ class MDMR_Model {
 	 * @return bool True if current user can update roles, false if not.
 	 */
 	public function can_update_roles() {
+
+		do_action( 'mdmr/before_can_update_roles' );
 
 		if ( is_network_admin() || ! current_user_can( 'edit_users' ) || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
 				return false;

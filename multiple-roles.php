@@ -29,6 +29,7 @@ function md_multiple_roles() {
 	add_action( 'user_new_form',         array( $checklist, 'output_checklist' ) );
 	add_action( 'profile_update',        array( $checklist, 'process_checklist' ) );
 
+	// For new user form (in Backoffice)
 	// In multisite, user_register hook is too early so wp_mu_activate_user add user role after
 	if ( is_multisite() ) {
 		add_action( 'wpmu_activate_user',    array( $checklist, 'process_checklist' ) ); // Handle Multisite

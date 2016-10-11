@@ -47,7 +47,7 @@ class MDMR_Checklist_Controller {
 
 		wp_nonce_field( 'update-md-multiple-roles', 'md_multiple_roles_nonce' );
 
-		$roles        = $this->model->get_roles();
+		$roles        = $this->model->get_editable_roles();
         $user_roles   = ( isset( $user->roles ) ) ? $user->roles : null;
 
 		include( MDMR_PATH . 'views/checklist.html.php' );
@@ -61,6 +61,9 @@ class MDMR_Checklist_Controller {
 	 * @param int $user_id The user ID whose roles might get updated.
 	 */
 	public function process_checklist( $user_id ) {
+
+		do_action( 'mdmr/before_process_checklist', $user_id, $_POST['md_multiple_roles_nonce'] );
+
 		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
 			return;
 		}
