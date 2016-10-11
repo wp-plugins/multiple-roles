@@ -28,7 +28,13 @@ function md_multiple_roles() {
 	add_action( 'edit_user_profile',     array( $checklist, 'output_checklist' ) );
 	add_action( 'user_new_form',         array( $checklist, 'output_checklist' ) );
 	add_action( 'profile_update',        array( $checklist, 'process_checklist' ) );
-	add_action( 'user_register',         array( $checklist, 'process_checklist' ) );
+
+	// In multisite, user_register hook is too early so wp_mu_activate_user add user role after
+	if ( is_multisite() ) {
+		add_action( 'wpmu_activate_user',    array( $checklist, 'process_checklist' ) ); // Handle Multisite
+	} else {
+		add_action( 'user_register',         array( $checklist, 'process_checklist' ) );
+	}
 
 	$column = new MDMR_Column_Controller( $model );
 	add_filter( 'manage_users_columns',       array( $column, 'replace_column' ), 11 );
