@@ -3,7 +3,7 @@
 Plugin Name: Multiple Roles
 Description: Allow users to have multiple roles on one site.
 Version: 1.1
-Author: Michael Dance, Florian Tiar
+Author: Florian TIAR
 Author URI: http://tiar-florian.fr
 Plugin URI: https://wordpress.org/plugins/multiple-roles/
 Github URI: https://github.com/Mahjouba91/multiple-roles

@@ -16,8 +16,11 @@ This plugin allows you to select multiple roles for a user - something that Word
 
 User edit and Add new user screens will display a checklist of roles instead of the default role dropdown. The main user list screen will also display all roles a user has.
 
-It supports well Multisite mode
-That's it. No extra settings. This plugin is a good complement to other user plugins that don't support multiple roles, such as <a href="https://wordpress.org/plugins/members/">Members</a>.
+It also supports well Multisite mode.
+
+That's it. No extra settings.
+
+If you want to contribute to this plugin, feel free to check the Github repository : https://github.com/Mahjouba91/multiple-roles
 
 == Installation ==
 
@@ -39,11 +42,11 @@ That's it. No extra settings. This plugin is a good complement to other user plu
 
 = Who can edit users roles? =
 
-Anyone with the `edit_users` capability. By default, that means only administrators and, on multi-site networks, super admins.
+Anyone with the `edit_users` capability. By default, that means only administrators and network administrators on multi-site.
 
 = Can you edit your own roles? =
 
-If you're a network admin on a multi-site setup, yes, you can edit your roles in sites on that network. Otherwise, no. This is how WordPress works normally too.
+If you're a network administrator on a multi-site setup, yes, you can edit your roles in sites of that network. Otherwise, no. This is how WordPress works normally too.
 
 = I'm on the user edit screen - where's the checklist of roles? =
 
@@ -61,13 +64,14 @@ Sure. The user will still be able to log in and out, but won't be able to access
 == Changelog ==
 
 = 1.1 =
-* Add support of role checkbox in new user form (admin).
+* New maintainer : Florian TIAR, you're strongly encouraged to update this plugin
+* Add support of role checkbox in new user form (admin)
+* Add Multisite support (for new user form)
 * Add i18n support (text domain, translatable strings and pot file)
-* Add Multisite support
 * Add some hooks (actions and filters)
-* Fix issue where some users role (like editor) could add admin users
+* Fix issue where some low level users could add admin users
 * Sanitize and escape all data
 * Enhance UX of the form
 
 = 1.0 =
-* Initial release.
+* Initial release
