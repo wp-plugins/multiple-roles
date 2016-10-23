@@ -4,3 +4,5 @@
 
 # PHP Storm files
 .idea
+
+release.sh
