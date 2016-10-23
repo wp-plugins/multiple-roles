@@ -62,7 +62,7 @@ class MDMR_Checklist_Controller {
 	 */
 	public function process_checklist( $user_id ) {
 
-		do_action( 'mdmr/before_process_checklist', $user_id, $_POST['md_multiple_roles_nonce'] );
+		do_action( 'mdmr_before_process_checklist', $user_id, $_POST['md_multiple_roles_nonce'] );
 
 		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
 			return;

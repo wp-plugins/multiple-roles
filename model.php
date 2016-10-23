@@ -26,7 +26,7 @@ class MDMR_Model {
 			$final_roles[$key] = $role['name'];
 		}
 
-		return apply_filters( 'mdmr/get_editable_roles', (array) $final_roles );
+		return apply_filters( 'mdmr_get_editable_roles', (array) $final_roles );
 	}
 
 	/**
@@ -65,7 +65,7 @@ class MDMR_Model {
 	 */
 	public function update_roles( $user_id = 0, $roles = array() ) {
 
-		do_action( 'mdmr/before_update_roles', $user_id, $roles );
+		do_action( 'mdmr_before_update_roles', $user_id, $roles );
 
 		if ( empty( $roles ) ) {
 			return false;
@@ -83,7 +83,7 @@ class MDMR_Model {
 			$user->add_role( $role );
 		}
 
-		do_action( 'mdmr/after_update_roles', $user_id, $roles, $user->roles );
+		do_action( 'mdmr_after_update_roles', $user_id, $roles, $user->roles );
 
 		return true;
 	}
@@ -97,7 +97,7 @@ class MDMR_Model {
 	 */
 	public function can_update_roles() {
 
-		do_action( 'mdmr/before_can_update_roles' );
+		do_action( 'mdmr_before_can_update_roles' );
 
 		if ( is_network_admin() || ! current_user_can( 'edit_users' ) || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
 				return false;
