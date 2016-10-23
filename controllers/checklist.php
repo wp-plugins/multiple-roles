@@ -30,7 +30,7 @@ class MDMR_Checklist_Controller {
 		if ( 'user-edit.php' !== $hook && 'user-new.php' !== $hook) {
 			return;
 		}
-		wp_enqueue_script( 'md-multiple-roles', MDMR_URL . 'views/js/scripts.js', array( 'jquery' ) );
+		wp_enqueue_script( 'md-multiple-roles', MDMR_URL . 'views/js/scripts.js', array( 'jquery' ), '1.0' );
 	}
 
 	/**
