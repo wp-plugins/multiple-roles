@@ -50,7 +50,7 @@ class MDMR_Checklist_Controller {
 		$roles        = $this->model->get_editable_roles();
         $user_roles   = ( isset( $user->roles ) ) ? $user->roles : null;
 
-		include( MDMR_PATH . 'views/checklist.html.php' );
+		include( apply_filters( 'mdmr_checklist_template', MDMR_PATH . 'views/checklist.html.php' ) );
 
 	}
 
