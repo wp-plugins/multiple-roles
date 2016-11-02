@@ -3,7 +3,7 @@ Contributors: SeventhSteel, mista-flo
 Tags: multiple roles, multiple roles per user, user roles, edit user roles, edit roles, more than one role, more than one role per user, more than one role for each user, many roles per user, unlimited roles
 Requires at least: 3.1
 Tested up to: 4.6.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 Donate link: https://www.paypal.me/FlorianTIAR/5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -62,6 +62,9 @@ Sure. The user will still be able to log in and out, but won't be able to access
 2. The Users screen with the enhanced Roles column
 
 == Changelog ==
+
+= 1.1.1 =
+* Remove PHP closure to ensure Backward Compatibility with PHP versions < 5.3
 
 = 1.1 =
 * New maintainer : Florian TIAR, you're strongly encouraged to update this plugin
