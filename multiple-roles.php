@@ -43,9 +43,11 @@ function md_multiple_roles() {
 	add_filter( 'manage_users_columns',       array( $column, 'replace_column' ), 11 );
 	add_filter( 'manage_users_custom_column', array( $column, 'output_column_content' ), 10, 3 );
 
-    add_action( 'init', function() {
-        load_plugin_textdomain( 'multiple-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-    } );
+    add_action( 'init', 'load_translation' );
 }
 
 md_multiple_roles();
+
+function load_translation() {
+	load_plugin_textdomain( 'multiple-roles', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
