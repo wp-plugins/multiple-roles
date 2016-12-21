@@ -100,7 +100,7 @@ class MDMR_Model {
 		do_action( 'mdmr_before_can_update_roles' );
 
 		if ( is_network_admin() || ! current_user_can( 'edit_users' ) || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
-				return false;
+			return false;
 		}
 
 		return true;

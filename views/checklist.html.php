@@ -6,7 +6,7 @@
  * @var $user_roles array An array of role names belonging to the current user.
  */
 $creating = isset( $_POST['createuser'] );
-$selected_roles = $creating && isset( $_POST['md_multiple_roles'] ) ? wp_unslash( $_POST['md_multiple_roles'] ) : '';
+$selected_roles = $creating && isset( $_POST['role'] ) ? wp_unslash( $_POST['role'] ) : '';
 ?>
 <h3><?php _e( 'Permissions', 'multiple-roles' ); ?></h3>
 <table class="form-table">
@@ -19,7 +19,7 @@ $selected_roles = $creating && isset( $_POST['md_multiple_roles'] ) ? wp_unslash
 					<input
 						id="md-multiple-roles-<?php echo esc_attr( $name ) . '-' . $input_uniq_id; ?>"
 						type="checkbox"
-						name="md_multiple_roles[]"
+						name="role[]"
 						value="<?php echo esc_attr( $name ); ?>"
                         <?php if ( ! is_null( $user_roles ) ) : // Edit user page
                             checked( in_array( $name, $user_roles ) );

@@ -62,7 +62,7 @@ class MDMR_Checklist_Controller {
 	 */
 	public function process_checklist( $user_id ) {
 
-		do_action( 'mdmr_before_process_checklist', $user_id, $_POST['md_multiple_roles_nonce'] );
+		do_action( 'mdmr_before_process_checklist', $user_id, $_POST['role'] );
 
 		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
 			return;
@@ -72,12 +72,61 @@ class MDMR_Checklist_Controller {
 			return;
 		}
 
-		$new_roles = ( isset( $_POST['md_multiple_roles'] ) && is_array( $_POST['md_multiple_roles'] ) ) ? $_POST['md_multiple_roles'] : array();
-		if ( empty( $new_roles ) ) {
+		$roles = ( isset( $_POST['role'] ) && is_array( $_POST['role'] ) ) ? $_POST['role'] : array();
+		if ( empty( $roles ) ) {
 			return;
 		}
 
-		$this->model->update_roles( $user_id, $new_roles );
+		$this->model->update_roles( $user_id, $roles );
+	}
+
+//	/**
+//	 * Add multiple roles in meta array on multisite signups database table
+//	 *
+//	 * @param $meta
+//	 * @param $user
+//	 * @param $user_email
+//	 * @param $key
+//	 *
+//	 * @return mixed
+//	 */
+//	public function mu_add_roles_in_signup( $meta, $user, $user_email, $key ) {
+//
+//		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
+//			return $meta;
+//		}
+//
+//		if ( ! $this->model->can_update_roles() ) {
+//			return $meta;
+//		}
+//
+//		$roles = ( isset( $_POST['role'] ) && is_array( $_POST['role'] ) ) ? $_POST['role'] : array();
+//		if ( ! empty( $roles ) ) {
+//			$meta['role'] = $roles;
+//		}
+//
+//		return $meta;
+//	}
+
+	/**
+	 * Add multiple roles after user activation
+	 *
+	 * @param $user_id
+	 * @param $password
+	 * @param $meta
+	 */
+	public function mu_add_roles_after_activation( $user_id, $password, $meta ) {
+		if ( ! empty( $meta['add_to_blog'] ) ) {
+			$blog_id = $meta['add_to_blog'];
+			remove_user_from_blog( $user_id, get_network()->site_id ); // remove user from main blog.
+			add_user_to_blog( $blog_id, $user_id, '' );
+			update_user_meta( $user_id, 'primary_blog', $blog_id );
+		}
+
+		if ( ! empty( $meta['new_role'] ) ) {
+			$user = get_user_by( 'id', (int) $user_id );
+			$this->model->update_roles( $user_id, $meta['new_role'] );
+		}
 	}
 
 }
