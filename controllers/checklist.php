@@ -61,8 +61,13 @@ class MDMR_Checklist_Controller {
 	 * @param int $user_id The user ID whose roles might get updated.
 	 */
 	public function process_checklist( $user_id ) {
-
 		do_action( 'mdmr_before_process_checklist', $user_id, $_POST['role'] );
+
+		if ( 'user_register' === current_action() ) {
+			$input_name = 'role';
+		} else {
+			$input_name = 'md_multiple_roles';
+		}
 
 		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
 			return;
@@ -72,41 +77,13 @@ class MDMR_Checklist_Controller {
 			return;
 		}
 
-		$roles = ( isset( $_POST['role'] ) && is_array( $_POST['role'] ) ) ? $_POST['role'] : array();
+		$roles = ( isset( $_POST[ $input_name ] ) && is_array( $_POST[ $input_name ] ) ) ? $_POST[ $input_name ] : array();
 		if ( empty( $roles ) ) {
 			return;
 		}
 
 		$this->model->update_roles( $user_id, $roles );
 	}
-
-//	/**
-//	 * Add multiple roles in meta array on multisite signups database table
-//	 *
-//	 * @param $meta
-//	 * @param $user
-//	 * @param $user_email
-//	 * @param $key
-//	 *
-//	 * @return mixed
-//	 */
-//	public function mu_add_roles_in_signup( $meta, $user, $user_email, $key ) {
-//
-//		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
-//			return $meta;
-//		}
-//
-//		if ( ! $this->model->can_update_roles() ) {
-//			return $meta;
-//		}
-//
-//		$roles = ( isset( $_POST['role'] ) && is_array( $_POST['role'] ) ) ? $_POST['role'] : array();
-//		if ( ! empty( $roles ) ) {
-//			$meta['role'] = $roles;
-//		}
-//
-//		return $meta;
-//	}
 
 	/**
 	 * Add multiple roles after user activation
@@ -124,7 +101,6 @@ class MDMR_Checklist_Controller {
 		}
 
 		if ( ! empty( $meta['new_role'] ) ) {
-			$user = get_user_by( 'id', (int) $user_id );
 			$this->model->update_roles( $user_id, $meta['new_role'] );
 		}
 	}
