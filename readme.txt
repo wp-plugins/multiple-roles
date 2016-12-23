@@ -3,7 +3,7 @@ Contributors: SeventhSteel, mista-flo
 Tags: multiple roles, multiple roles per user, user roles, edit user roles, edit roles, more than one role, more than one role per user, more than one role for each user, many roles per user, unlimited roles
 Requires at least: 3.1
 Tested up to: 4.7
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 Donate link: https://www.paypal.me/FlorianTIAR/5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -62,6 +62,11 @@ Sure. The user will still be able to log in and out, but won't be able to access
 2. The Users screen with the enhanced Roles column
 
 == Changelog ==
+
+= 1.1.4 =
+* 23 december 2016
+* Fix fatal error in new user in single site : After adding an user, a wp_die error was shown "You can’t give users that role", it was due to changes in 1.1.2
+* Workaround to handle multisite support without breaking single site features
 
 = 1.1.3 =
 * 22 december 2016
