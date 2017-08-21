@@ -27,7 +27,7 @@ $selected_roles = $creating && isset( $_POST['md_multiple_roles'] ) ? wp_unslash
 							checked( in_array( $name, $selected_roles ) );
                         endif; ?>
 					/>
-					<?php echo esc_html( $label ); ?>
+					<?php echo esc_html( translate_user_role( $label ) ); ?>
 				</label>
 				<br />
 			<?php endforeach; ?>

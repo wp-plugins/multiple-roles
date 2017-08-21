@@ -7,7 +7,7 @@
 ?><div class="md-multiple-roles">
 	<?php if ( ! empty( $roles ) ) :
 		foreach( $roles as $name => $label ) :
-			$roles[$name] = '<a href="users.php?role=' . esc_attr( $name ) . '">' . esc_html( $label ) . '</a>';
+			$roles[$name] = '<a href="users.php?role=' . esc_attr( $name ) . '">' . esc_html( translate_user_role( $label ) ) . '</a>';
 		endforeach;
 		echo implode( ', ', $roles );
 	else : ?>

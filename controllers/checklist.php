@@ -130,7 +130,40 @@ class MDMR_Checklist_Controller {
 			return new WP_Error( 'md_update_user_signups_failed' );
 		}
 	}
-
+	
+	/**
+	 * Add roles in signup meta with WP 4.8 filter : better method
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param $meta
+	 * @param $domain
+	 * @param $path
+	 * @param $title
+	 * @param $user
+	 * @param $user_email
+	 * @param $key
+	 */
+	public function mu_add_roles_in_signup_meta_recently( $meta, $domain, $path, $title, $user, $user_email, $key ) {
+		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
+			return;
+		}
+		
+		if ( ! $this->model->can_update_roles() ) {
+			return;
+		}
+		
+		$new_roles = ( isset( $_POST['md_multiple_roles'] ) && is_array( $_POST['md_multiple_roles'] ) ) ? $_POST['md_multiple_roles'] : array();
+		if ( empty( $new_roles ) ) {
+			return;
+		}
+		
+		$meta['md_roles'] = $new_roles;
+		
+		return $meta;
+		
+	}
+	
 	/**
 	 * Add multiple roles after user activation
 	 *

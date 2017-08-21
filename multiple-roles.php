@@ -2,7 +2,7 @@
 /*
 Plugin Name: Multiple Roles
 Description: Allow users to have multiple roles on one site.
-Version: 1.1.4
+Version: 1.2.0
 Author: Florian TIAR
 Author URI: http://tiar-florian.fr
 Plugin URI: https://wordpress.org/plugins/multiple-roles/
@@ -32,7 +32,11 @@ add_action( 'profile_update',        array( $checklist, 'process_checklist' ) );
 // For new user form (in Backoffice)
 // In multisite, user_register hook is too early so wp_mu_activate_user add user role after
 if ( is_multisite() ) {
-	add_action( 'after_signup_user',     array( $checklist, 'mu_add_roles_in_signup_meta' ), 10, 4 );
+	if ( version_compare( get_bloginfo( 'version' ), '4.8', '>=' ) ) {
+		add_filter( 'signup_site_meta',     array( $checklist, 'mu_add_roles_in_signup_meta_recently' ), 10, 7 );
+	} else {
+		add_action( 'after_signup_user',     array( $checklist, 'mu_add_roles_in_signup_meta' ), 10, 4 );
+	}
 	add_action( 'wpmu_activate_user',    array( $checklist, 'mu_add_roles_after_activation' ), 10, 3 );
 } else {
 	add_action( 'user_register',         array( $checklist, 'process_checklist' ) );
