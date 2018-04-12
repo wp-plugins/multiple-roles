@@ -76,8 +76,12 @@ class MDMR_Model {
 
 		$user = get_user_by( 'id', (int) $user_id );
 
-		// remove all roles
-		$user->set_role( '' );
+		// Remove all editable roles
+		$editable = get_editable_roles();
+		$editable_roles = is_array($editable) ? array_keys($editable) : array();
+		foreach( $editable_roles as $role ) {
+			$user->remove_role( $role );
+		}
 
 		foreach( $roles as $role ) {
 			$user->add_role( $role );
