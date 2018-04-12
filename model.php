@@ -67,10 +67,6 @@ class MDMR_Model {
 
 		do_action( 'mdmr_before_update_roles', $user_id, $roles );
 
-		if ( empty( $roles ) ) {
-			return false;
-		}
-
 		$roles = array_map( 'sanitize_key', (array) $roles );
 		$roles = array_filter( (array) $roles, 'get_role' );
 

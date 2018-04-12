@@ -70,9 +70,6 @@ class MDMR_Checklist_Controller {
 		}
 
 		$new_roles = ( isset( $_POST['md_multiple_roles'] ) && is_array( $_POST['md_multiple_roles'] ) ) ? $_POST['md_multiple_roles'] : array();
-		if ( empty( $new_roles ) ) {
-			return;
-		}
 
 		$this->model->update_roles( $user_id, $new_roles );
 	}
