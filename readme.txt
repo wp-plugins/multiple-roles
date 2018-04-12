@@ -42,7 +42,7 @@ If you want to contribute to this plugin, feel free to check the Github reposito
 
 = Who can edit users roles? =
 
-Anyone with the `edit_users` capability. By default, that means only administrators and network administrators on multi-site.
+Anyone with the `promote_users` capability. By default, that means only administrators and network administrators on multi-site.
 
 = Can you edit your own roles? =
 
@@ -50,7 +50,7 @@ If you're a network administrator on a multi-site setup, yes, you can edit your 
 
 = I'm on the user edit screen - where's the checklist of roles? =
 
-It's underneath the default profile stuff, under the heading "Permissions". If you still can't find it, you might be on your own profile page, or you might not have the `edit_users` capability.
+It's underneath the default profile stuff, under the heading "Permissions". If you still can't find it, you might be on your own profile page, or you might not have the `promote_users` capability.
 
 = Can you remove all roles from a user? =
 
