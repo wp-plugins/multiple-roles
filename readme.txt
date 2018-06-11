@@ -3,7 +3,7 @@ Contributors: SeventhSteel, mista-flo
 Tags: multiple roles, multiple roles per user, user roles, edit user roles, edit roles, more than one role, more than one role per user, more than one role for each user, many roles per user, unlimited roles
 Requires at least: 3.1
 Tested up to: 4.9
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Donate link: https://www.paypal.me/FlorianTIAR/5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,7 +42,7 @@ If you want to contribute to this plugin, feel free to check the Github reposito
 
 = Who can edit users roles? =
 
-Anyone with the `edit_users` capability. By default, that means only administrators and network administrators on multi-site.
+Anyone with the `promote_users` capability. By default, that means only administrators and network administrators on multi-site.
 
 = Can you edit your own roles? =
 
@@ -50,7 +50,7 @@ If you're a network administrator on a multi-site setup, yes, you can edit your 
 
 = I'm on the user edit screen - where's the checklist of roles? =
 
-It's underneath the default profile stuff, under the heading "Permissions". If you still can't find it, you might be on your own profile page, or you might not have the `edit_users` capability.
+It's underneath the default profile stuff, under the heading "Permissions". If you still can't find it, you might be on your own profile page, or you might not have the `promote_users` capability.
 
 = Can you remove all roles from a user? =
 
@@ -62,6 +62,13 @@ Sure. The user will still be able to log in and out, but won't be able to access
 2. The Users screen with the enhanced Roles column
 
 == Changelog ==
+
+= 1.3.0 =
+* 12 april 2018
+* Use 'promote_users' cap instead of ‘edit_users’
+* Fixed bug preventing us from unsetting a user's roles
+* Only remove get_editable_roles() roles on update
+* Thanks to <a href="https://github.com/thomasfw/">thomasfw</a> for the contributions
 
 = 1.2.0 =
 * 21 august 2017

@@ -67,17 +67,17 @@ class MDMR_Model {
 
 		do_action( 'mdmr_before_update_roles', $user_id, $roles );
 
-		if ( empty( $roles ) ) {
-			return false;
-		}
-
 		$roles = array_map( 'sanitize_key', (array) $roles );
 		$roles = array_filter( (array) $roles, 'get_role' );
 
 		$user = get_user_by( 'id', (int) $user_id );
 
-		// remove all roles
-		$user->set_role( '' );
+		// Remove all editable roles
+		$editable = get_editable_roles();
+		$editable_roles = is_array($editable) ? array_keys($editable) : array();
+		foreach( $editable_roles as $role ) {
+			$user->remove_role( $role );
+		}
 
 		foreach( $roles as $role ) {
 			$user->add_role( $role );
@@ -99,7 +99,7 @@ class MDMR_Model {
 
 		do_action( 'mdmr_before_can_update_roles' );
 
-		if ( is_network_admin() || ! current_user_can( 'edit_users' ) || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
+		if ( is_network_admin() || ! current_user_can( 'promote_users' ) || ( defined( 'IS_PROFILE_PAGE' ) && IS_PROFILE_PAGE && ! current_user_can( 'manage_sites' ) ) ) {
 				return false;
 		}
 
