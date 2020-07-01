@@ -2,8 +2,8 @@
 Contributors: SeventhSteel, mista-flo
 Tags: multiple roles, multiple roles per user, user roles, edit user roles, edit roles, more than one role, more than one role per user, more than one role for each user, many roles per user, unlimited roles
 Requires at least: 3.1
-Tested up to: 4.9
-Stable tag: 1.3.0
+Tested up to: 5.4.2
+Stable tag: 1.3.1
 Requires PHP: 5.4
 Donate link: https://www.paypal.me/FlorianTIAR/5
 License: GPLv2 or later
@@ -63,6 +63,11 @@ Sure. The user will still be able to log in and out, but won't be able to access
 2. The Users screen with the enhanced Roles column
 
 == Changelog ==
+
+= 1.3.1 =
+* 1st july 2020
+* Test the plugin against WordPress 5.4
+* Fix an issue when the user role could be lost because of a wrong check in the backend
 
 = 1.3.0 =
 * 12 april 2018
