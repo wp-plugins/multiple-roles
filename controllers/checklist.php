@@ -47,8 +47,8 @@ class MDMR_Checklist_Controller {
 
 		wp_nonce_field( 'update-md-multiple-roles', 'md_multiple_roles_nonce' );
 
-		$roles        = $this->model->get_editable_roles();
-        $user_roles   = ( isset( $user->roles ) ) ? $user->roles : null;
+		$roles      = $this->model->get_editable_roles();
+		$user_roles = ( isset( $user->roles ) ) ? $user->roles : null;
 
 		include( apply_filters( 'mdmr_checklist_template', MDMR_PATH . 'views/checklist.html.php' ) );
 
