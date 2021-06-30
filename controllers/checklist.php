@@ -95,7 +95,7 @@ class MDMR_Checklist_Controller {
 	 * @return void|WP_Error
 	 */
 	public function mu_add_roles_in_signup_meta( $user, $user_email, $key, $meta ) {
-		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
+		if ( ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
 			return;
 		}
 
@@ -152,7 +152,7 @@ class MDMR_Checklist_Controller {
 	 * @param $key
 	 */
 	public function mu_add_roles_in_signup_meta_recently( $meta, $domain, $path, $title, $user, $user_email, $key ) {
-		if ( isset( $_POST['md_multiple_roles_nonce'] ) && ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
+		if ( ! wp_verify_nonce( $_POST['md_multiple_roles_nonce'], 'update-md-multiple-roles' ) ) {
 			return;
 		}
 		
