@@ -8,7 +8,7 @@ class MDMR_Column_Controller {
 	/**
 	 * The model object.
 	 *
-	 * @var object
+	 * @var \MDMR_Model $model
 	 */
 	var $model;
 
@@ -29,7 +29,7 @@ class MDMR_Column_Controller {
 	 */
 	public function replace_column( $columns ) {
 		unset( $columns['role'] );
-		$columns['md_multiple_roles_column'] = 'Roles';
+		$columns['md_multiple_roles_column'] = __( 'Roles', 'multiple-roles' );
 		return $columns;
 	}
 
@@ -43,13 +43,14 @@ class MDMR_Column_Controller {
 	 */
 	public function output_column_content( $output, $column, $user_id ) {
 
-		if ( $column !== 'md_multiple_roles_column' )
+		if ( 'md_multiple_roles_column' !== $column ) {
 			return $output;
+		}
 
 		$roles = $this->model->get_user_roles( $user_id );
 
 		ob_start();
-		include( MDMR_PATH . 'views/column.html.php' );
+		include( apply_filters( 'mdmr_column_template', MDMR_PATH . 'views/column.html.php' ) );
 		return ob_get_clean();
 
 	}

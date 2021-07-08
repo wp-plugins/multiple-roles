@@ -1,0 +1,8 @@
+### WordPress template
+*.log
+.htaccess
+
+# PHP Storm files
+.idea
+
+release.sh
