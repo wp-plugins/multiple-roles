@@ -1,5 +1,5 @@
 === Multiple Roles ===
-Contributors: SeventhSteel, mista-flo
+Contributors: SeventhSteel, mista-flo, cneumann
 Tags: multiple roles, multiple roles per user, user roles, edit user roles, edit roles, more than one role, more than one role per user, more than one role for each user, many roles per user, unlimited roles
 Requires at least: 3.1
 Tested up to: 5.7.2
